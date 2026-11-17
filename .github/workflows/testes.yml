@@ -1,10 +1,9 @@
-YAML
 name: Rodar Testes do MVP
 
 on: [push, pull_request]
 
 jobs:
-  test:
+  teste:
     runs-on: ubuntu-latest
     steps:
       - name: Copiar código do repositório
