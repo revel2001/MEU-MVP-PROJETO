@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MVP - Projeto de Software</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 0; padding: 20px; background-color: #f4f6f9; color: #333; transition: 0.3s; }
+        .container { max-width: 800px; margin: auto; background: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        header { display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid #0056b3; padding-bottom: 10px; margin-bottom: 20px; }
+        button { padding: 10px 15px; border: none; border-radius: 5px; cursor: pointer; font-weight: bold; }
+        .btn-primary { background-color: #0056b3; color: white; }
+        .btn-access { background-color: #28a745; color: white; }
+        .card { border: 1px solid #ddd; padding: 15px; border-radius: 5px; margin-bottom: 15px; }
+        input { padding: 8px; width: 70%; margin-right: 10px; border: 1px solid #ccc; border-radius: 4px; }
+        
+        /* Estilos de Acessibilidade (Alto Contraste e Fonte Maior) */
+        body.alto-contraste { background-color: #000 !important; color: #ffff00 !important; font-size: 1.25em; }
+        body.alto-contraste .container { background-color: #111 !important; border: 2px solid #ffff00; }
+        body.alto-contraste .card { border-color: #ffff00; }
+        body.alto-contraste button { background-color: #ffff00 !important; color: #000 !important; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Painel de Controle - MVP</h1>
+            <button class="btn-access" onclick="alternarAcessibilidade()">♿ Alto Contraste / Fonte +</button>
+        </header>
+
+        <div class="card">
+            <h3>Novo Registro no Sistema</h3>
+            <input type="text" id="novoItem" placeholder="Digite uma atividade ou dado do MVP...">
+            <button class="btn-primary" onclick="adicionarItem()">Cadastrar</button>
+        </div>
+
+        <div class="card">
+            <h3>Registros Cadastrados (Base de Dados)</h3>
+            <ul id="listaItens">
+                <li><strong>#01</strong> - Configuração inicial do ambiente concluída (Status: Ativo)</li>
+                <li><strong>#02</strong> - Integração com repositório GitHub validada (Status: Ativo)</li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        function adicionarItem() {
+            const input = document.getElementById('novoItem');
+            if (input.value.trim() !== "") {
+                const ul = document.getElementById('listaItens');
+                const li = document.createElement('li');
+                const num = ul.children.length + 1;
+                li.innerHTML = `<strong>#0${num}</strong> - ${input.value} (Status: Salvo)`;
+                ul.appendChild(li);
+                input.value = "";
+            }
+        }
+
+        function alternarAcessibilidade() {
+            document.body.classList.toggle('alto-contraste');
+        }
+    </script>
+</body>
+</html>
